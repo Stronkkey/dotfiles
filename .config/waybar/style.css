@@ -128,7 +128,7 @@
 }
 
 window#waybar {
-	background: shade(alpha(@borders, 0.55), 1.25);
+	background: shade(alpha(@borders, .25), 1.25);
 }
 #pulseaudio {
      color: RGB(245,49,49);   

@@ -3,9 +3,10 @@
 # Copy this to ~/.config/sway/config and edit it to your liking.
 #
 # Read `man 5 sway` for a complete reference.
+## Variables
 
-### Variables
-#
+exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
+exec mako
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Home row direction keys, like vim
@@ -14,58 +15,34 @@ set $down j
 set $up k
 set $right l
 # Your preferred terminal emulator
-set $term xfce4-terminal
-
+set $term alacritty
 # Your preferred application launcher
 # Note: pass the final command to swaymsg so that the resulting window can be opened
 # on the original workspace that the command was run on.
-set $menu LD_LIBRARY_PATH=/usr/local/lib/  bemenu-run
-
+set $menu bemenu-run
+# Make windows float when pressing Meta+T and tile on Meta+Z
+bindsym $mod+t floating enable
+bindsym $mod+z floating disable
+# adds Gaps
+gaps inner 4
 ### Output configuration
 #
-# Default wallpaper (more resolutions are available in /usr/share/backgrounds/sway/)
-output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1366x768.png fill
+output * bg /usr/share/backgrounds/City.jpg fill
 #
+# Example con
 # Example configuration:
 #
-#   output HDMI-A-1 resolution 1920x1080 position 1920,0
-#
-# You can get the names of your outputs by running: swaymsg -t get_outputs
-
-### Idle configuration
-#
-# Example configuration:
-#
-# exec swayidle -w \
-#          timeout 300 'swaylock -f -c 000000' \
-#          timeout 600 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
-#          before-sleep 'swaylock -f -c 000000'
-#
-# This will lock your screen after 300 seconds of inactivity, then turn off
-# your displays after another 300 seconds, and turn your screens back on when
-# resumed. It will also lock your screen before your computer goes to sleep.
-
-### Input configuration
-#
-# Example configuration:
-#
-#   input "2:14:SynPS/2_Synaptics_TouchPad" {
-#       dwt enabled
-#       tap enabled
-#       natural_scroll enabled
-#       middle_emulation enabled
-#   }
-#
-# You can get the names of your inputs by running: swaymsg -t get_inputs
-# Read `man 5 sway-input` for more information about this section.
-
+exec swayidle -w \
+         timeout 1200 'swaylock -f -c 000000' \
+         timeout 1500 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
 ### Key bindings
 #
 # Basics:
 #
     # Start a terminal
     bindsym $mod+Return exec $term
-
+    
     # Kill focused window
     bindsym $mod+Shift+q kill
 
@@ -87,6 +64,8 @@ output * bg /usr/share/backgrounds/sway/Sway_Wallpaper_Blue_1366x768.png fill
 #
 # Moving around:
 #
+    # Move floating window to mouse
+    bindsym $mod+m move position pointer
     # Move your focus around
     bindsym $mod+$left focus left
     bindsym $mod+$down focus down
@@ -225,7 +204,8 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 	xkb_layout de
 }
 
-
+# Be sure the borders are tiny
+default_border pixel
 # Audio Media Keys
 bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
 bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% 
@@ -233,10 +213,10 @@ bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ to
 bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
 
 # Brightness Media Keys
-
-# gonna add em later
-# Keys
-
-
+bindsym XF86MonBrightnessUp light -A 10 # increase screen brightness
+bindsym XF86MonBrightnessDown light -U 10 # decrease screen brightness
 # Executing Things
-exec libreddit
+exec pipewire # I originally put these in ~/.config/shell/profile but i wasn't able to login
+exec pipewire-pulse
+exec pipewire-media-session
+exec sh $HOME/.local/share/libtard.sh # Launch libreddit
