@@ -4,11 +4,13 @@
 #
 # Read `man 5 sway` for a complete reference.
 ## Variables
-
+# Notifications
 exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
-exec mako
+exec mako # Make mako run only when needed
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
+# Set Browser. In this case, librewolf
+set $BROWSER librewolf
 # Home row direction keys, like vim
 set $left h
 set $down j
@@ -49,6 +51,7 @@ exec swayidle -w \
     # Start your launcher
     bindsym $mod+d exec $menu
 
+    bindsym $mod+Shift+b exec $BROWSER
     # Drag floating windows by holding down $mod and left mouse button.
     # Resize them with right mouse button + $mod.
     # Despite the name, also works for non-floating windows.
@@ -216,7 +219,6 @@ bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOU
 bindsym XF86MonBrightnessUp light -A 10 # increase screen brightness
 bindsym XF86MonBrightnessDown light -U 10 # decrease screen brightness
 # Executing Things
-exec pipewire # I originally put these in ~/.config/shell/profile but i wasn't able to login
-exec pipewire-pulse
-exec pipewire-media-session
+exec pipewire & exec pipewire-media-session # originally in ~/.config/shell/profile but it didn't work
+exec pipewire-pulse 
 exec sh $HOME/.local/share/libtard.sh # Launch libreddit

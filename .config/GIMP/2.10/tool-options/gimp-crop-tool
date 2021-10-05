@@ -1,0 +1,8 @@
+# GIMP gimp-crop-tool options
+
+(aspect-denominator 96)
+(aspect-numerator 436)
+(foreground (color-rgb 1 0 0))
+(pattern "Leather")
+
+# end of gimp-crop-tool options

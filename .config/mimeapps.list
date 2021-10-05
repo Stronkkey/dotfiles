@@ -1,22 +1,30 @@
 [Default Applications]
 application/xml=org.xfce.mousepad.desktop
 audio/x-matroska=userapp-mpv --hwdec=auto --loop --player-operation-mode=pseudo-gui-578CA1.desktop
-video/mp4=userapp-mpv --hwdec=auto-2ASHA1.desktop
+video/mp4=userapp-mpv --hwdec=auto --loop --player-operation-mode=pseudo-gui-578CA1.desktop
 video/x-matroska=userapp-mpv --hwdec=auto --loop-0GRRA1.desktop
 audio/x-vorbis+ogg=userapp-mpv --hwdec=auto --loop --player-operation-mode=pseudo-gui-578CA1.desktop
 audio/x-wav=userapp-mpv --hwdec=auto --loop --player-operation-mode=pseudo-gui-578CA1.desktop
+application/vnd.ms-publisher=leet-generator.desktop
+audio/mp4=userapp-mpv --hwdec=auto --loop --player-opertaion-mode=pseudo-gui-PLLBA1.desktop
+image/svg+xml=imv-folder.desktop
+audio/mpeg=userapp-mpv --hwdec=auto --loop --player-operation-mode=pseudo-gui-578CA1.desktop
 
 [Added Associations]
 application/xml=mousepad.desktop;org.xfce.mousepad.desktop;
 image/png=imv.desktop;sxiv.desktop;gimp.desktop;
-application/pdf=mpv.desktop;
+application/pdf=xpdf.desktop;mpv.desktop;
 audio/x-matroska=userapp-mpv --hwdec=auto --loop-0GRRA1.desktop;mpv.desktop;userapp-mpv --hwdec=auto --loop --player-operation-mode=pseudo-gui-578CA1.desktop;
 text/plain=org.xfce.mousepad.desktop;
 application/octet-stream=org.xfce.mousepad.desktop;
 application/vnd.kde.kxmlguirc=org.xfce.mousepad.desktop;
 application/x-shellscript=org.xfce.mousepad.desktop;
 image/jpeg=sxiv.desktop;
-video/mp4=userapp-mpv --hwdec=auto-2ASHA1.desktop;
+video/mp4=userapp-mpv --hwdec=auto-2ASHA1.desktop;userapp-mpv --hwdec=auto --loop --player-operation-mode=pseudo-gui-578CA1.desktop;
 video/x-matroska=userapp-mpv --hwdec=auto-2ASHA1.desktop;userapp-mpv --hwdec=auto --loop-0GRRA1.desktop;
 audio/x-vorbis+ogg=userapp-mpv --hwdec=auto --loop-0GRRA1.desktop;userapp-mpv --hwdec=auto --loop --player-operation-mode=pseudo-gui-578CA1.desktop;
 audio/x-wav=userapp-mpv --hwdec=auto --loop-0GRRA1.desktop;userapp-mpv --hwdec=auto --loop --player-operation-mode=pseudo-gui-578CA1.desktop;
+application/vnd.ms-publisher=leet-generator.desktop;
+audio/mp4=userapp-mpv --hwdec=auto --loop --player-opertaion-mode=pseudo-gui-PLLBA1.desktop;
+image/svg+xml=imv-folder.desktop;
+audio/mpeg=userapp-mpv --hwdec=auto --loop --player-operation-mode=pseudo-gui-578CA1.desktop;

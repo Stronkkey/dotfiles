@@ -1,0 +1,4 @@
+pgl.yoyo.org:HSTS	0	18903	1649030841539,1,0,2
+addons.cdn.mozilla.net:HSTS	0	18903	1664798779797,1,1,2
+raw.githubusercontent.com:HSTS	0	18903	1664798835780,1,0,2
+www.roblox.com^partitionKey=%28http%2Croblox.com%29:HSTS	0	18903	1664798920916,1,0,2
