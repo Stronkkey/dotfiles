@@ -7,6 +7,9 @@
 # Notifications
 exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
 exec mako >/dev/null 2>&1
+# Wob
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
 # Set Browser. In this case, librewolf
@@ -153,7 +156,13 @@ exec swayidle -w \
 
     # Show the next scratchpad window or hide the focused scratchpad window.
     # If there are multiple scratchpad windows, this command cycles through them.
-    bindsym $mod+minus scratchpad show
+ bindsym $mod+minus scratchpad show
+
+### GTK+ Theme
+
+exec sh $XDG_CONFIG_HOME/gtkchoose.sh
+exec_always import-gsettings
+
 #
 # Resizing containers:
 #
@@ -210,14 +219,13 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 # Be sure the borders are tiny
 default_border pixel
 # Audio Media Keys
-bindsym XF86AudioRaiseVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ +10%
-bindsym XF86AudioLowerVolume exec --no-startup-id pactl set-sink-volume @DEFAULT_SINK@ -10% 
-bindsym XF86AudioMute exec --no-startup-id pactl set-sink-mute @DEFAULT_SINK@ toggle
-bindsym XF86AudioMicMute exec --no-startup-id pactl set-source-mute @DEFAULT_SOURCE@ toggle
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && ( pamixer --get-mute && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2% && pamixer --get-volume > $WOBSOCK
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2% && pamixer --get-volume > $WOBSOCK
 
 # Brightness Media Keys
-bindsym XF86MonBrightnessUp light -A 10 # increase screen brightness
-bindsym XF86MonBrightnessDown light -U 10 # decrease screen brightness
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5  && light -G | cut -d'.' -f1 > $WOBSOCK # Increase Brightness (and send to wob)
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5   && light -G | cut -d'.' -f1 > $WOBSOCK # Decrease Brightness (and send to wob)
 # Executing Things
 exec pipewire >/dev/null 2>&1
 exec pipewire-media-session >/dev/null 2>&1 # originally in ~/.config/shell/profile but it didn't work

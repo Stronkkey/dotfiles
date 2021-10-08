@@ -1,10 +1,10 @@
 #!/bin/zsh
 # This place is for Startup.
 # This is used for auto completion.
-zstyle ':completion:*' menu select
+zstyle ':completion:*' menu select gain-privileges 1
 zmodload zsh/complist
 _comp_options+=(globdots)
-
+setopt COMPLETE_ALIASES
 #####################
 # These are various keyboard related things.
 
@@ -59,5 +59,5 @@ alias hide="setsid -f $1 >/dev/null 2>&1" # Hide output with hide
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"' # Make wget not spawn a .wget-hsts file
 
 colorscript -r
-sh /usr/local/opt/pokemon-colorscripts/pokemon-colorscripts.sh -r
+pokemon-colorscripts -r
 # i use artix btw

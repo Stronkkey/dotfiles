@@ -325,7 +325,8 @@ schemes:
       text: CellForeground
       background: '#282828'
     normal:
-      black:   '#282828'
+      #black:   '#282828'
+      black:   '#16161d'
       red:     '#cc241d'
       green:   '#98971a'
       yellow:  '#d79921'
@@ -334,7 +335,8 @@ schemes:
       cyan:    '#689d6a'
       white:   '#a89984'
     bright:
-      black:   '#928374'
+      #black:  '#928374'
+      black:   '#282828'
       red:     '#fb4934'
       green:   '#b8bb26'
       yellow:  '#fabd2f'
