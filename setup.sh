@@ -1,21 +1,18 @@
 #!/bin/sh
 # My shitty setup script
 
-echo "DO NOT USE ON REAL MACHINE!"
-exit 0
+echo "This is experimental."
 GTK_THEME_SOURCE="https://github.com/i-mint/LightningBug"
 AUR_SOURCE="https://aur.archlinux.org"
 
 [ "$(id -u)" = "0" ] && echo "Do not run this as root" && exit 0
-echo "Note: you need to have ProList.txt and .config in the working directory and a Internet connection."
+echo "Note: you need to have Pkgs.txt and .config in the working directory and a Internet connection. This only works on artix runit"
 # Stuff from the AUR to install.
 # paru-bin vimix-cursors libreddit-git librewolf-bin
-echo "Are you sure you want to install my dotfiles?. THIS WILL DELETE YOUR ~/.config FOLDER! "
+echo "Are you sure you want to install my dotfiles?. THIS WILL REPLACE YOU ~/.config, /etc/zsh/zprofile AND /etc/pacman.conf!"
 read ques
 [ "$ques" != "y" ] && echo "Cancelling setup. user said no"  && exit 0
 ### Add Arch Repos
-
-
 
 sudo pacman -S --needed artix-archlinux-support
 
@@ -26,7 +23,7 @@ sudo rm /etc/pacman.conf && sudo cp ./pacman.conf /etc/pacman.conf
 sudo pacman -Syu --noconfirm
 
 ## End
-
+sudo pacman -S - < Pkgs.txt
 # Installing stuff from the AUR
 git clone $AUR_SOURCE/paru-bin.git
 git clone $AUR_SOURCE/vimix-cursors
@@ -47,6 +44,9 @@ chmod +x pokemon-colorscripts
 cp -R ./.config $HOME/.config
 
 ## Change some core stuff
-sudo cp ./zprofile /etc/zsh/zprofile
+sudo cp $PWD/zprofile /etc/zsh/zprofile
 sudo chsh -s /bin/zsh $USER
+sudo chsh -s /bin/zsh root
 ##
+
+# Add services
