@@ -3,6 +3,7 @@ alacritty
 bemenu
 dash
 dnsmasq
+dnsmasq-runit
 exa
 base-devel
 ffmpeg
@@ -18,8 +19,10 @@ lib32-libva-intel-driver
 lib32-vulkan-intel
 libva-intel-driver
 libvirt
+libvirt-runit
 lightdm
 lightdm-gtk-greeter
+lightdm-runit
 lxappearance
 mediainfo
 man
