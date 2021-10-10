@@ -147,20 +147,21 @@
     "sway/workspaces": {
         "all-outputs": true,
         "disable-scroll": true,
-        "format": "{icon} {name}",
+        "format": "{name}  {icon}",
         "format-icons": {
-            "1:www": "龜", // Icon: firefox-browser
-            "2:mail": "", // Icon: mail
-            "3:editor": "", // Icon: code
-            "4:terminals": "", // Icon: terminal
-            "5:portal": "", // Icon: terminal
+            "1": "", 
+            "2": "🌎", // Icon: mail
+            "3": "", // Icon: code
+            "4": "📜", // Icon: terminal
+            "5": "", // Icon: terminal
             "urgent": "",
-            "focused": "",
-            "default": ""
+            "focused": "📂",
+            "default": "📁"
         }
     },
 
     "temperature": {
+      "hwmon-path": "/sys/class/hwmon/hwmon3/temp1_input",
       "critical-threshold": 80,
       "interval": 1,
       "format": "{icon}  {temperatureC}°C",
