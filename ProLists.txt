@@ -1,3 +1,6 @@
+xorg
+xorg-server
+xorg-xwayland
 tmux
 alacritty
 bemenu
