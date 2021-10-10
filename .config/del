@@ -1,0 +1,5 @@
+#!/bin/sh
+
+for i in *;
+	do [ "$i" != "alacritty" ] && [ "$i" != "del" ] && [ "$i" != "gtk-3.0" ] && [ "$i" != "htop" ] && [ "$i" != "i3" ] && [ "$i" != "lf" ] && [ "$i" != "shell" ] && [ "$i" != "sway" ] && [ "$i" != "swaylock" ] && [ "$i" != "waybar" ] && rm -fr $i
+done
