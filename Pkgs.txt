@@ -1,4 +1,5 @@
 alacritty
+dnsmasq
 bemenu
 dash
 ffmpeg
@@ -9,7 +10,6 @@ i3status
 intel-gpu-tools
 lightdm
 lightdm-gtk-greeter
-lightdm-runit
 lxappearance
 mpv
 mupdf
@@ -17,7 +17,6 @@ neovim
 net-tools
 neofetch
 networkmanager
-networkmanager-runit
 nm-connection-editor
 noto-fonts
 noto-fonts-cjk
@@ -25,6 +24,7 @@ noto-fonts-emoji
 noto-fonts-extra
 otf-font-awesome
 p7zip
+htop
 pamixer
 papirus-icon-theme
 pavucontrol
