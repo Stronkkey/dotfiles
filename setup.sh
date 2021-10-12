@@ -42,6 +42,7 @@ sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.ta
 sudo pacman -Syu --noconfirm
 # End
 sudo pacman -S --needed --noconfirm - < Pkgs.txt
+yes | sudo pacman -S --needed --noconfirm iptables-nft
 #Installing stuff from the AUR
 sudo pacman -S --needed --noconfirm paru vimix-cursors libreddit-git librewolf
 git clone $AUR_SOURCE/pokemon-colorscripts-git

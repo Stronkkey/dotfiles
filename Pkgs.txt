@@ -1,6 +1,5 @@
 alacritty
 exa
-ebtables
 bemenu
 dash
 ffmpeg
@@ -8,7 +7,6 @@ base-devel
 highlight
 i3-gaps
 i3status
-intel-gpu-tools
 lxappearance
 mpv
 mupdf
