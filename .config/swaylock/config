@@ -1,6 +1,6 @@
 ignore-empty-password
 disable-caps-lock-text
-image=/usr/share/backgrounds/City.jpg
+image=/opt/Paper.jpg
 font=Source Code Pro
 clock
 timestr=%I:%M %p

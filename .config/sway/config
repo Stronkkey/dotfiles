@@ -42,7 +42,7 @@ bindsym $mod+z floating disable
 gaps inner 4
 ### Output configuration
 #
-output * bg /usr/share/backgrounds/City.jpg fill
+output * bg /opt/Paper.jpg fill
 #
 # Example con
 # Example configuration:

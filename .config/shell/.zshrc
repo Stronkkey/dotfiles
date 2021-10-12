@@ -58,6 +58,5 @@ done
 alias hide="setsid -f $1 >/dev/null 2>&1" # Hide output with hide
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"' # Make wget not spawn a .wget-hsts file
 
-colorscript -r
 pokemon-colorscripts -r
 # i use artix btw

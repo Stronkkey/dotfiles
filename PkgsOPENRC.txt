@@ -1,3 +1,0 @@
-lightdm-openrc
-networkmanager-openrc
-dnsmasq-openrc

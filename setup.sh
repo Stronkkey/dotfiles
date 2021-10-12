@@ -28,11 +28,12 @@ artix_spec() {
 # For Arch
 arch_spec() {
 	sudo rm /etc/pacman.conf && sudo cp ./pacman-arch /etc/pacman.conf
- #Add chaotic-aur
+}
+#Add chaotic-aur
 
-pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
-pacman-key --lsign-key 3056513887B78AEB
-pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
+sudo pacman-key --lsign-key 3056513887B78AEB
+sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
 # Distro Stuff
 [ "$distro" = "Artix" ] && artix_spec
@@ -43,58 +44,26 @@ sudo pacman -Syu --noconfirm
 sudo pacman -S --needed --noconfirm - < Pkgs.txt
 #Installing stuff from the AUR
 sudo pacman -S --needed --noconfirm paru vimix-cursors libreddit-git librewolf
-cd pokemon-colorscripts-git && makepkg -si --noconfirm && cd ../ && rm -rf pokemon-colorscripts-git
+git clone $AUR_SOURCE/pokemon-colorscripts-git
+cd pokemon-colorscripts-git
+makepkg -si --noconfirm
+cd ..
+rm -rf pokemon-colorscripts-git
 #End from install stuff from the AUR
 
-mkdir -p $HOME/.local/bin && cd $HOME/.local/bin && ln -f /usr/local/opt/pokemon-colorscripts/pokemon-colorscripts.sh pokemon-colorscripts
-chmod +x pokemon-colorscripts
+mkdir -p $HOME/.local/bin
+ln -f /usr/local/opt/pokemon-colorscripts/pokemon-colorscripts.sh $HOME/.local/bin/pokemon-colorscripts
+chmod +x $HOME/.local/bin/pokemon-colorscripts
+
+echo "~/.config IS GOING TO BE DELETED NOW. A BACKUP IS IN ~/.config.bak"
+sudo mv "./City.jpg" /opt/Paper.jpg
 
 [ -f $HOME/.config ] && cp -r $HOME/.config $HOME/.config.bak && rm -rf $HOME/.config
-cp -R ./.config $HOME/.config
+cp -R "./.config" "$HOME/.config"
 
 # Change some core stuff
-sudo cp $PWD/zprofile /etc/zsh/zprofile
+sudo cp ./zprofile $HOME/.zprofile
 sudo chsh -s /bin/zsh $USER
 sudo chsh -s /bin/zsh root
-
-
-## Add services
-
-enable_runit_services() {
-       sudo pacman -S --needed --noconfirm - < PkgsRUNIT.txt
-       for rserv in lightdm NetworkManager dnsmasq
-       	do sudo ln -s /etc/runit/sv/$rserv /run/runit/runsvdir/default
-       done
-}
-
-enable_openrc_services() {
-       sudo pacman -S --needed --noconfirm - < PkgsOPENRC.txt
-       for oserv in lightdm NetworkManager dnsmasq
-               do sudo rc-update add $oserv
-       done
-}
-enable_s6_services() {
-       sudo pacman -S --needed --noconfirm - < PkgsS6.txt
-       for sserv in lightdm NetworkManager dnsmasq
-               do sudo s6-rc-bundle-update add default $sserv
-       done
-}
-enable_suite66_services() {
-       sudo pacman -S --needed --noconfirm - < Pkgs66.txt
-       for seerv in lightdm NetworkManager dnsmasq
-               do sudo 66-enable -t default $seerv
-       done
-}
-soystemd() {
-	for i in lightdm NetworkManager dnsmasq
-		do systemctl enable $i.service
-	done
-}
-detect_init() {
-	[ -f "/usr/bin/runit-init" ] && enable_runit_services && exit 1
-	[ -f "/usr/bin/openrc-init" ] && enable_openrc_services && exit 1
-	[ -f "/usr/bin/s6-init" ] && enable_s6_services && exit 1
-	[ -f "/usr/bin/suite66-init" ] && enable_suite66_services && exit 1
-	[ -f "/usr/bin/systemctl" ] && soystemd  && exit 1
-}
-detect_init
+echo "Done!"
+echo "Unless there were errors. the setup was successful."

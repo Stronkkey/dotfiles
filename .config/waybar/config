@@ -45,7 +45,8 @@
     // -------------------------------------------------------------------------
 
     "battery": {
-        "interval": 10,
+        "adapter": "/sys/class/power_supply/AC/hwmon0", 
+	"interval": 10,
         "states": {
             "warning": 30,
             "critical": 15

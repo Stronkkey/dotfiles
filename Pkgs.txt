@@ -1,5 +1,6 @@
 alacritty
-dnsmasq
+exa
+ebtables
 bemenu
 dash
 ffmpeg
@@ -8,8 +9,6 @@ highlight
 i3-gaps
 i3status
 intel-gpu-tools
-lightdm
-lightdm-gtk-greeter
 lxappearance
 mpv
 mupdf

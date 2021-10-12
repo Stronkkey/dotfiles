@@ -1,3 +1,0 @@
-lightdm-suite66
-networkmanager-suite66
-dnsmasq-suite66

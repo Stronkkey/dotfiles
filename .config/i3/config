@@ -9,6 +9,8 @@ exec mako
 default_border pixel
 exec picom
 
+
+exec_always xwallpaper --zoom /opt/Paper.jpg
 # i3 config file (v4)
 #
 # Please see https://i3wm.org/docs/userguide.html for a complete reference!
