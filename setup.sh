@@ -1,21 +1,21 @@
 #!/bin/sh
 #My shitty setup script
-echo                "NOTE"
-echo "##### This is experimental. #####"
-echo "     #######################"
+echo "#########     NOTE    #############"
+echo "##### This is experimental. #######"
+echo "###################################"
 sleep 2
 
-sudo pacman -S --noconfirm --needed lsb-release
+sudo pacman -S --noconfirm --needed lsb-release >/dev/null 2>&1
 distro="$(lsb_release -si)"
 
 GTK_THEME_SOURCE="https://github.com/i-mint/LightningBug"
 AUR_SOURCE="https://aur.archlinux.org"
 
 [ "$(id -u)" = "0" ] && echo "Do not run this as root as it can cause damage!" && exit 0
-echo "\n\nNote: you need to have Pkgs.txt and .config in the working directory and a Internet connection.\n\n"
+echo -e "\n\nNote: you need to have a working Internet connection.\n\n"
 # Stuff from the AUR to install.
 # paru-bin vimix-cursors libreddit-git librewolf-bin
-echo "Are you sure you want to install my dotfiles?. THIS WILL REPLACE YOU ~/.config, /etc/zsh/zprofile AND /etc/pacman.conf!"
+echo "Are you sure you want to install my dotfiles?. THIS WILL REPLACE YOU ~/.config, ~/.zprofile AND /etc/pacman.conf!"
 read ques
 [ "$ques" != "y" ] && echo "Cancelling setup. user said no"  && exit 0
  #Add Arch Repos
