@@ -3,7 +3,6 @@
 echo "#########     NOTE    #############"
 echo "##### This is experimental. #######"
 echo "###################################"
-sleep 2
 
 sudo pacman -S --noconfirm --needed lsb-release >/dev/null 2>&1
 distro="$(lsb_release -si)"
@@ -11,17 +10,15 @@ distro="$(lsb_release -si)"
 GTK_THEME_SOURCE="https://github.com/i-mint/LightningBug"
 AUR_SOURCE="https://aur.archlinux.org"
 
-[ "$(id -u)" = "0" ] && echo "Do not run this as root as it can cause damage!" && exit 0
-echo -e "\n\nNote: you need to have a working Internet connection.\n\n"
-# Stuff from the AUR to install.
-# paru-bin vimix-cursors libreddit-git librewolf-bin
+[ "$(id -u)" = "0" ] && echo "Do not run this as root as it can cause damage!" && exit 1
+echo -e "\nNote: you need to have a working Internet connection.\n"
 echo "Are you sure you want to install my dotfiles?. THIS WILL REPLACE YOU ~/.config, ~/.zprofile AND /etc/pacman.conf!"
 read ques
-[ "$ques" != "y" ] && echo "Cancelling setup. user said no"  && exit 0
+[ "$ques" != "y" ] && echo "Cancelling setup. user said no"  && exit 1
  #Add Arch Repos
  #Artix add arch repos ( artix specific)
 artix_spec() {
-	sudo pacman -S --needed artix-archlinux-support
+	sudo pacman -S --needed --noconfirm artix-archlinux-support
 	sudo pacman-key --populate archlinux
 	sudo rm /etc/pacman.conf && sudo cp ./pacman-artix.conf /etc/pacman.conf
 }
@@ -33,7 +30,7 @@ arch_spec() {
 
 sudo pacman-key --recv-key 3056513887B78AEB --keyserver keyserver.ubuntu.com
 sudo pacman-key --lsign-key 3056513887B78AEB
-sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
+sudo pacman -U --needed --noconfirm 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.tar.zst' 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-mirrorlist.pkg.tar.zst'
 
 # Distro Stuff
 [ "$distro" = "Artix" ] && artix_spec
@@ -41,21 +38,12 @@ sudo pacman -U 'https://cdn-mirror.chaotic.cx/chaotic-aur/chaotic-keyring.pkg.ta
 
 sudo pacman -Syu --noconfirm
 # End
-sudo pacman -S --needed --noconfirm - < Pkgs.txt
-yes | sudo pacman -S --needed --noconfirm iptables-nft
+sudo pacman -S --needed --noconfirm --ask 4 - < Pkgs.txt
 #Installing stuff from the AUR
 sudo pacman -S --needed --noconfirm paru vimix-cursors libreddit-git librewolf
-git clone $AUR_SOURCE/pokemon-colorscripts-git
-cd pokemon-colorscripts-git
-makepkg -si --noconfirm
-cd ..
-rm -rf pokemon-colorscripts-git
+[ -f ./pokemon-colorscripts-git ] && rm -rfv pokemon-colorscripts-git
+git clone $AUR_SOURCE/pokemon-colorscripts-git.git && cd pokemon-colorscripts-git && makepkg -si --noconfirm --needed && cd .. && rm -rf pokemon-colorscripts-git
 #End from install stuff from the AUR
-
-mkdir -p $HOME/.local/bin
-ln -f /usr/local/opt/pokemon-colorscripts/pokemon-colorscripts.sh $HOME/.local/bin/pokemon-colorscripts
-chmod +x $HOME/.local/bin/pokemon-colorscripts
-
 echo "~/.config IS GOING TO BE DELETED NOW. A BACKUP IS IN ~/.config.bak"
 sudo mv "./City.jpg" /opt/Paper.jpg
 
