@@ -16,10 +16,15 @@ neofetch
 networkmanager
 nm-connection-editor
 noto-fonts
+opendoas
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
 otf-font-awesome
+paru
+vimix-cursors
+libreddit-git
+librewolf
 p7zip
 htop
 pamixer
@@ -70,3 +75,6 @@ pcre
 json-c
 gdk-pixbuf2
 scdoc
+xorg
+xorg-xinit
+xorg-server

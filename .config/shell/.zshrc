@@ -52,7 +52,7 @@ alias ls="exa"
 
 alias mpv="mpv --hwdec=auto" # Be sure to enable hardware decoding
 for command in mount umount sv shutdown poweroff reboot ; do
-	alias $command="doas $command"
+	alias $command="sudo $command"
 done
 
 alias hide="setsid -f $1 >/dev/null 2>&1" # Hide output with hide

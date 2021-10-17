@@ -9,6 +9,7 @@ exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
 exec mako >/dev/null 2>&1
 # Wob
 set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec rm $WOBSOCK
 exec mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
 # Logo key. Use Mod1 for Alt.
 set $mod Mod4
@@ -48,7 +49,7 @@ output * bg /opt/Paper.jpg fill
 # Example configuration:
 #
 exec swayidle -w \
-         timeout 1200 'swaylock -f -c 000000' \
+         timeout 1200 'swaylock -f -F -c 000000' \
          timeout 1500 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
          before-sleep 'swaylock -f -c 000000'
 ### Key bindings
