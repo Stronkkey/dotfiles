@@ -41,21 +41,20 @@ source /usr/share/zsh/plugins/zsh-autosuggestions/zsh-autosuggestions.zsh
 source /usr/share/doc/pkgfile/command-not-found.zsh
 ##
 
-
 # Aliases
 alias vim=nvim
 
 alias mv="mv -v"
 alias rm="rm -v"
 alias mkdir="mkdir -pv"
+
 alias ls="exa"
 
 alias mpv="mpv --hwdec=auto" # Be sure to enable hardware decoding
-for command in mount umount shutdown poweroff reboot ; do
+for command in mount umount sv shutdown poweroff reboot ; do
 	alias $command="sudo $command"
 done
 
-alias startx="startx $XDG_CONFIG_HOME/X11/xinitrc $XDG_CONFIG_HOME/X11/xserverrc"
 alias hide="setsid -f $1 >/dev/null 2>&1" # Hide output with hide
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"' # Make wget not spawn a .wget-hsts file
 

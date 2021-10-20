@@ -51,7 +51,7 @@ pokemon() {
 	[ -f ./pokemon-colorscripts-git ] && rm -rfv pokemon-colorscripts-git
 	git clone $AUR_SOURCE/pokemon-colorscripts-git.git && cd pokemon-colorscripts-git && makepkg -si --noconfirm --needed && cd .. && rm -rf pokemon-colorscripts-git
 }
-pokemon
+
 
 echo "~/.config IS GOING TO BE DELETED NOW. A BACKUP IS IN ~/.config.bak"
 echo "Moving Wallpaper to /opt"
@@ -66,7 +66,7 @@ sudo mv $GTK_THEME_NAME/$GTK_COPY_THEME /usr/share/themes
 echo "Installed $GTK_THEME_NAME"
 #Change some core stuff
 echo "Copying .zprofile to ~"
-cp ./zprofile $HOME/.zprofile
+sudo cp ./zprofile $HOME/.zprofile
 echo "Changing shell"
 sudo chsh -s /bin/zsh $USER
 sudo chsh -s /bin/zsh root

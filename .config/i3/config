@@ -200,4 +200,3 @@ bindsym $mod+r mode "resize"
 bar {
        status_command yambar 
 }
-exec runsv $HOME/.config/service/pipewire
