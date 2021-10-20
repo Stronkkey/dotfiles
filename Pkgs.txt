@@ -76,4 +76,6 @@ xorg
 xorg-xinit
 xorg-server
 xorg-xwayland
+wob
+pcmanfm
 xorg-xeyes

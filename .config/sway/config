@@ -234,7 +234,6 @@ bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2% && pa
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5  && light -G | cut -d'.' -f1 > $WOBSOCK # Increase Brightness (and send to wob)
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5   && light -G | cut -d'.' -f1 > $WOBSOCK # Decrease Brightness (and send to wob)
 # Executing Things
-exec pipewire >/dev/null 2>&1
-exec pipewire-media-session >/dev/null 2>&1 # originally in ~/.config/shell/profile but it didn't work
-exec pipewire-pulse >/dev/null 2>&1
-exec sh $HOME/.local/share/libtard.sh >/dev/null 2>&1 # Launch libreddit
+exec pipewire
+exec pipewire-pulse
+exec pipewire-media-session
