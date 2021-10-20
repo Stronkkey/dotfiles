@@ -1,5 +1,5 @@
 # Configuration for Alacritty, the GPU enhanced terminal emulator.
-
+#/
 # Any items in the `env` entry below will be added as
 # environment variables. Some entries may override variables
 # set by alacritty itself.
@@ -298,7 +298,7 @@ schemes:
       white:   '#e6e6d1'
 
    # luke's st build color scheme
-  sucklessluke: &dracula
+  sucklessluke: &lukes
     primary:
       background: '#282828'
       foreground: '#ffffff'
@@ -423,9 +423,8 @@ schemes:
       white:   '#fdf6e3' # base3
 
 # Choose ONE color scheme from those available in the above list.
-colors: *dracula
-
-# Visual Bell
+colors: *lukes
+  # Visual Bell
 #
 # Any time the BEL code is received, Alacritty "rings" the visual bell. Once
 # rung, the terminal background will be set to white and transition back to the
