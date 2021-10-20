@@ -16,7 +16,6 @@ neofetch
 networkmanager
 nm-connection-editor
 noto-fonts
-opendoas
 noto-fonts-cjk
 noto-fonts-emoji
 noto-fonts-extra
@@ -42,7 +41,6 @@ pulsemixer
 qemu
 qtcurve-qt5
 qt5-wayland
-qt5ct
 slurp
 supertux
 supertuxkart
@@ -74,7 +72,8 @@ wlroots
 pcre
 json-c
 gdk-pixbuf2
-scdoc
 xorg
 xorg-xinit
 xorg-server
+xorg-xwayland
+xorg-xeyes
