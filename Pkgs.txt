@@ -11,9 +11,7 @@ lxappearance
 mpv
 mupdf
 neovim
-net-tools
 neofetch
-networkmanager
 nm-connection-editor
 noto-fonts
 noto-fonts-cjk
@@ -39,7 +37,6 @@ pkgfile
 pkgconf
 pulsemixer
 qemu
-qtcurve-qt5
 qt5-wayland
 slurp
 supertux
@@ -57,10 +54,10 @@ waybar
 wf-recorder
 wget
 wl-clipboard
-xarchiver
 xorg-xeyes
 xorg-xkill
-youtube-dl
+python
+python3
 zip
 zsh
 zsh-autosuggestions
@@ -77,5 +74,4 @@ xorg-xinit
 xorg-server
 xorg-xwayland
 wob
-pcmanfm
 xorg-xeyes

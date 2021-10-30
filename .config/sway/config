@@ -132,6 +132,9 @@ exec swayidle -w \
     # Note: workspaces can have any name you want, not just numbers.
     # We just use 1-10 as the default.
 #
+
+## X sucks
+#xwayland disable
 # Layout stuff:
 #
     # You can "split" the current object of your focus with
@@ -199,20 +202,6 @@ bindsym $mod+r mode "resize"
 # Status Bar:
 #
 # Read `man 5 sway-bar` for more information about this section.
-#bar {
- #   position top
-
-    # When the status_command prints a new line to stdout, swaybar updates.
-    # The default just shows the current date and time.
-#    status_command while date +'%Y-%m-%d %l:%M:%S %p'; do sleep 1; done
-
- #   colors {
-  #      statusline #ffffff
-   #     background #323232
-    #    inactive_workspace #32323200 #32323200 #5c5c5c
-    #}
-#}
-
 bar {
 	swaybar_command waybar
 }
@@ -223,17 +212,15 @@ input "1:1:AT_Translated_Set_2_keyboard" {
 	xkb_layout de
 }
 
-# Be sure the borders are tiny
+# Borders :
 default_border pixel
-# Audio Media Keys
+# Media Keys
 bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && ( pamixer --get-mute && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
 bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2% && pamixer --get-volume > $WOBSOCK
 bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2% && pamixer --get-volume > $WOBSOCK
-
-# Brightness Media Keys
 bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5  && light -G | cut -d'.' -f1 > $WOBSOCK # Increase Brightness (and send to wob)
 bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5   && light -G | cut -d'.' -f1 > $WOBSOCK # Decrease Brightness (and send to wob)
-# Executing Things
+# Executing pipewire
 exec pipewire
 exec pipewire-pulse
 exec pipewire-media-session

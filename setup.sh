@@ -1,9 +1,12 @@
 #!/bin/sh
-[ -f /bin/lsb_release ] || echo "Please Download lsb-release!" && exit 1
+
+[ "$(which pacman)" ] || echo "No pacman" && exit 1
+[ "$(which sudo)" ] || echo "No sudo!" && exit 1
+
+sudo pacman --noconfirm --ask 4 -Syu
+[ "$(which lsb_release)" ] || sudo pacman -S lsb-release
 
 distro="$(lsb_release -si)"
-
-[ "$distro" != "Artix" ] && [ "$distro" != "Arch" ] && echo "Not arch or artix" && exit 1
 
 GTK_THEME_SOURCE="https://github.com/i-mint/LightningBug.git" # Theme Git repo
 GTK_THEME_NAME="LightningBug" # This should be equal to the repos name
@@ -11,7 +14,7 @@ GTK_COPY_NAME="Lightningbug-Dark" # What to copy from the themes dir
 AUR_SOURCE="https://aur.archlinux.org"
 
 [ "$(id -u)" = "0" ] && echo "Do not run this as root as it can cause damage!" && exit 1
-echo -e "Note: you need to have a working Internet connection."
+echo "Note: you need to have a working Internet connection."
 echo "Are you sure you want to install my dotfiles?. THIS WILL REPLACE YOU ~/.config, ~/.zprofile AND /etc/pacman.conf!"
 read ques
 [ "$ques" != "y" ] && echo "Cancelling setup. user said no"  && exit 1
@@ -51,7 +54,7 @@ pokemon() {
 	[ -f ./pokemon-colorscripts-git ] && rm -rfv pokemon-colorscripts-git
 	git clone $AUR_SOURCE/pokemon-colorscripts-git.git && cd pokemon-colorscripts-git && makepkg -si --noconfirm --needed && cd .. && rm -rf pokemon-colorscripts-git
 }
-pokemon
+[ "$(which pokemon-colorscripts)" ] || pokemon
 
 echo "~/.config IS GOING TO BE DELETED NOW. A BACKUP IS IN ~/.config.bak"
 echo "Moving Wallpaper to /opt"
@@ -60,12 +63,14 @@ sudo mv "./City.jpg" /opt/Paper.jpg
 [ -f $HOME/.config ] && cp -r $HOME/.config $HOME/.config.bak && rm -rf $HOME/.config && echo "Backed up ~/.config"
 cp -R "./.config" "$HOME/.config"
 
+install_theme() {
+	git clone $GTK_THEME_SOURCE
+	sudo mv $GTK_THEME_NAME/$GTK_COPY_THEME /usr/share/themes
+}
 ## Installing Theme
-git clone $GTK_THEME_SOURCE
-sudo mv $GTK_THEME_NAME/$GTK_COPY_THEME /usr/share/themes
-echo "Installed $GTK_THEME_NAME"
+install_theme && echo "Installed $GTK_THEME_NAME" || echo "error installing theme" && exit 1
 #Change some core stuff
-echo "Copying .zprofile to ~"
+echo "Copying .zprofile to ~/"
 cp ./zprofile $HOME/.zprofile
 echo "Changing shell"
 sudo chsh -s /bin/zsh $USER

@@ -55,6 +55,7 @@ for command in mount umount shutdown poweroff reboot ; do
 	alias $command="sudo $command"
 done
 
+alias susudo="su -c $1"
 alias startx="startx $XDG_CONFIG_HOME/X11/xinitrc $XDG_CONFIG_HOME/X11/xserverrc"
 alias hide="setsid -f $1 >/dev/null 2>&1" # Hide output with hide
 alias wget='wget --hsts-file="$XDG_CACHE_HOME/wget-hsts"' # Make wget not spawn a .wget-hsts file
