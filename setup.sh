@@ -1,11 +1,10 @@
 #!/bin/sh
 
-[ ! -f "/bin/pacman" ] && echo "No pacman" && exit 1
-[ ! -f "/bin/sudo" ] && echo "No sudo!" && exit 1
+[ ! -f "/bin/pacman" ] && echo "Pacman is not installed" && exit 1
+[ ! -f "/bin/sudo" ] && echo "Sudo is not installed" && exit 1
 
 sudo pacman --noconfirm --ask 4 -Syu
 [ ! -f "/bin/lsb_release" ] && sudo pacman --noconfirm --ask 4 -S lsb-release
-[ ! -f "/bin/pacman" ] && echo "Cannot install on non Arch system" && exit 0
 distro="$(lsb_release -si)"
 
 GTK_THEME_SOURCE="https://github.com/i-mint/LightningBug.git" # Theme Git repo
@@ -13,9 +12,9 @@ GTK_THEME_NAME="LightningBug" # This should be equal to the repos name
 GTK_COPY_NAME="Lightningbug-Dark" # What to copy from the themes dir
 AUR_SOURCE="https://aur.archlinux.org"
 
-[ "$(id -u)" = "0" ] && echo "setup.sh should not be ran as root" && exit 0
+[ "$(id -u)" = "0" ] && echo "setup.sh cannot not be ran as root" && exit 0
 echo "Note: you need to have a working Internet connection."
-echo "Are you sure you want to install my dotfiles?. This will replace ~/.config, ~/.zprofile and /etc/pacman.conf."
+echo "Are you sure you want to install my dotfiles? This will replace ~/.config, ~/.zprofile and /etc/pacman.conf."
 read ques
 [ "$ques" != "y" ] && echo "Cancelled setup."  && exit 1
  #Add Arch Repos
