@@ -40,12 +40,12 @@ window:
   # Window decorations
   #
   # Values for `decorations`:
-  #     - full: Borders and title bar
-  #     - none: Neither borders nor title bar
+  #     - full: Borders and title colors.footer_bar
+  #     - none: Neither borders nor title colors.footer_bar
   #
   # Values for `decorations` (macOS only):
-  #     - transparent: Title bar, transparent background and title bar buttons
-  #     - buttonless: Title bar, transparent background, but no title bar buttons
+  #     - transparent: Title colors.footer_bar, transparent background and title colors.footer_bar buttons
+  #     - buttonless: Title colors.footer_bar, transparent background, but no title colors.footer_bar buttons
   #decorations: full
 
   # Startup Mode (changes require restart)
@@ -260,7 +260,7 @@ schemes:
       focused_match:
         foreground: '#44475a'
         background: '#ffb86c'
-      bar:
+      colors.footer_bar:
         background: '#282a36'
         foreground: '#f8f8f2'
     line_indicator:
@@ -315,7 +315,7 @@ schemes:
       focused_match:
         foreground: '#44475a'
         background: '#ffb86c'
-      bar:
+      colors.footer_bar:
         background: '#282a36'
         foreground: '#f8f8f2'
     line_indicator:
@@ -454,11 +454,9 @@ colors: *lukes
 #
 # Window opacity as a floating point number from `0.0` to `1.0`.
 # The value `0.0` is completely transparent and `1.0` is opaque.
-background_opacity: 0.8
-# background_opacity: 0.80
 
-#selection:
-  #semantic_escape_chars: ",│`|:\"' ()[]{}<>\t"
+  #selection:
+  #semantic_escape_chars: nd",│`|:\"' ()[]{}<>\t"
 
   # When set to `true`, selected text will be copied to the primary clipboard.
   #save_to_clipboard: false
@@ -493,7 +491,8 @@ background_opacity: 0.8
 #   - (Windows) powershell
 shell:
   program: /bin/zsh
-
+window:
+  opacity: 0.75
 # Startup directory
 #
 # Directory the shell is started in. If this is unset, or `None`, the working
