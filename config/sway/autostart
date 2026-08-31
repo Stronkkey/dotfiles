@@ -1,0 +1,11 @@
+# Notifications
+exec dbus-daemon --session --address=unix:path=$XDG_RUNTIME_DIR/bus
+exec swaync
+
+# Wob
+set $WOBSOCK $XDG_RUNTIME_DIR/wob.sock
+exec rm $WOBSOCK
+exec mkfifo $WOBSOCK && tail -f $WOBSOCK | wob
+
+# Execute the Policiykit Agent. In this case, lxqt-policykit-agent.
+exec lxqt-policykit-agent

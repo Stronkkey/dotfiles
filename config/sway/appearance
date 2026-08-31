@@ -1,0 +1,14 @@
+# adds Gaps
+gaps inner 4
+
+output * bg ~/Pictures/Wallpapers/Paper3.jpg fill
+
+# Makes the screen go dark after a set time
+exec swayidle -w \
+         timeout 1200 'swaylock -f -F -c 000000' \
+         timeout 1500 'swaymsg "output * dpms off"' resume 'swaymsg "output * dpms on"' \
+         before-sleep 'swaylock -f -c 000000'
+
+
+# Borders :
+default_border pixel

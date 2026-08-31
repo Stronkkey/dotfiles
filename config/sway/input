@@ -1,0 +1,13 @@
+input "type:keyboard" {
+	xkb_layout de
+}
+
+input "type:touchpad" {
+  accel_profile flat
+  natural_scroll enabled
+  tap enabled
+}
+
+input "type:touch" {
+  drag enabled
+}

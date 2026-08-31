@@ -1,0 +1,5 @@
+#!/bin/sh
+[ $QT_QPA_PLATFORMTHEME = "gtk2" ] && unset QT_QPA_PLATFORMTHEME
+[ $QT_QPA_PLATFORMTHEME = "gtk3" ] && unset QT_QPA_PLATFORMTHEME
+exec /usr/lib/plasma-dbus-run-session-if-needed startplasma-wayland
+exit 0

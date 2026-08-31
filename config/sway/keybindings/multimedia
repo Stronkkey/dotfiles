@@ -1,0 +1,12 @@
+# For Big Screens
+bindsym $mod+Ctrl+1 output eDP-1 scale 1
+bindsym $mod+Ctrl+2 output eDP-1 scale 1.5
+
+# Media Keys
+bindsym XF86AudioMute exec pactl set-sink-mute @DEFAULT_SINK@ toggle && ( pamixer --get-mute && echo 0 > $WOBSOCK ) || pamixer --get-volume > $WOBSOCK
+bindsym XF86AudioRaiseVolume exec pactl set-sink-volume @DEFAULT_SINK@ +2% && pamixer --get-volume > $WOBSOCK
+bindsym XF86AudioLowerVolume exec pactl set-sink-volume @DEFAULT_SINK@ -2% && pamixer --get-volume > $WOBSOCK
+bindsym XF86MonBrightnessUp exec --no-startup-id light -A 5  && light -G | cut -d'.' -f1 > $WOBSOCK # Increase Brightness (and send to wob)
+bindsym XF86MonBrightnessDown exec --no-startup-id light -U 5   && light -G | cut -d'.' -f1 > $WOBSOCK # Decrease Brightness (and send to wob)
+bindsym XF86AudioMicMute exec pactl set-source-mute @DEFAULT_SOURCE@ toggle
+
