@@ -1,0 +1,2 @@
+#!/bin/sh
+[ -d "$XDG_CONFIG_DIR/autostart" ] && exec dex $XDG_CONFIG_DIR/autostart/*.desktop
