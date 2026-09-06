@@ -1,0 +1,197 @@
+[audio]
+enable_sounds = true
+
+[bar.default]
+background_opacity = 0.4999999888241291
+center = []
+concave_edge_corners = false
+end = [
+    "active_window",
+    "network",
+    "bluetooth",
+    "group:g1",
+    "volume",
+    "battery",
+    "brightness",
+    "clock",
+    "date",
+    "clipboard",
+    "control-center",
+    "session"
+]
+margin_ends = 0
+radius = 0
+start = [ "workspaces", "audio_visualizer", "media" ]
+thickness = 29
+
+    [[bar.default.capsule_group]]
+    accordion = true
+    accordion_direction = "start"
+    enabled = true
+    fill = "surface_variant"
+    id = "g1"
+    members = [ "cpu", "ram", "temp" ]
+    opacity = 1.0
+    padding = 6.0
+
+[battery]
+warning_threshold = 20
+
+[brightness]
+minimum_brightness = 0.0099999997764825821
+
+[calendar]
+
+[control_center.calendar]
+show_events_card = false
+show_week_numbers = true
+
+[desktop_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "desktop-widget-0000000000000002" ]
+
+    [desktop_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [desktop_widgets.widget.desktop-widget-0000000000000002]
+    box_height = 0.0
+    box_width = 0.0
+    cx = 1101.0003662109375
+    cy = 119.99998474121094
+    output = "eDP-1"
+    placement_height = 720.0
+    placement_width = 1280.0
+    rotation = 0.0
+    type = "media_player"
+
+        [desktop_widgets.widget.desktop-widget-0000000000000002.settings]
+        hide_when_no_media = true
+        layout = "horizontal"
+
+[dock]
+auto_hide = true
+background_opacity = 0.4999999888241291
+enabled = true
+magnification_scale = 1.0
+pinned = [ "firefox", "Alacritty", "org.musescore.MuseScore", "audacity", "net.lutris.Lutris", "org.kde.dolphin" ]
+reserve_space = false
+show_dots = true
+
+[hot_corners]
+enabled = true
+
+    [hot_corners.bottom_left]
+    action = "window_switcher"
+
+    [hot_corners.bottom_right]
+    action = "control_center"
+
+[location]
+address = "Waldshut-Tienge, Germany"
+auto_locate = true
+
+[lockscreen]
+fingerprint = false
+
+[lockscreen_widgets]
+enabled = false
+schema_version = 2
+widget_order = [ "lockscreen-login-box@eDP-1" ]
+
+    [lockscreen_widgets.grid]
+    cell_size = 16
+    major_interval = 4
+    visible = true
+
+    [lockscreen_widgets.widget."lockscreen-login-box@eDP-1"]
+    box_height = 196.0
+    box_width = 810.0
+    cx = 640.00006103515625
+    cy = 537.9998779296875
+    output = "eDP-1"
+    placement_height = 720.0
+    placement_width = 1280.0
+    rotation = 0.0
+    type = "login_box"
+
+        [lockscreen_widgets.widget."lockscreen-login-box@eDP-1".settings]
+        background_color = "surface_variant"
+        background_opacity = 0.88
+        background_radius = 12.0
+        center_password_text = false
+        input_opacity = 1.0
+        input_radius = 6.0
+        layout = "regular"
+        show_caps_lock = true
+        show_keyboard_layout = true
+        show_login_button = true
+        show_media = true
+        show_session_buttons = true
+        show_unlock_hint = true
+        show_weather = true
+
+[nightlight]
+enabled = true
+
+[notification]
+layer = "overlay"
+
+[shell]
+niri_overview_type_to_launch_enabled = true
+polkit_agent = true
+screen_time_enabled = true
+settings_show_advanced = false
+telemetry_enabled = true
+
+    [shell.panel]
+    control_center_placement = "floating"
+
+[theme]
+builtin = "Ayu"
+community_palette = "ADW"
+mode = "light"
+source = "wallpaper"
+wallpaper_scheme = "m3-fruit-salad"
+
+    [theme.templates]
+    builtin_ids = [ "gtk3", "gtk4", "kcolorscheme", "niri", "qt" ]
+
+[wallpaper]
+directory = "~/Pictures/Wallpapers"
+fill_color = "primary"
+
+    [wallpaper.default]
+    path = "~/Pictures/Wallpapers/Paper4.jpg"
+
+    [wallpaper.last]
+    path = "~/Pictures/Wallpapers/Paper4.jpg"
+
+    [wallpaper.monitors.eDP-1]
+    path = "~/Pictures/Wallpapers/Paper4.jpg"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "~/Pictures/Wallpapers/Paper4.jpg"
+    theme_mode = "light"
+    wallpaper_scheme = "m3-fruit-salad"
+
+    [[wallpaper.favorite]]
+    palette_source = "wallpaper"
+    path = "~/Pictures/Wallpapers/Paper2.jpg"
+    theme_mode = "dark"
+    wallpaper_scheme = "m3-fruit-salad"
+
+[widget.audio_visualizer]
+bands = 24
+interactive = false
+mirrored = false
+
+[widget.media]
+hide_when_no_media = true
+show_progress = true
+
+[widget.notifications]
+enabled = false
