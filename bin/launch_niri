@@ -1,0 +1,4 @@
+#!/bin/sh
+export XDG_CURRENT_DESKTOP="niri"
+export XDG_SESSION_TYPE="wayland"
+exec dbus-launch --exit-with-session niri --session
